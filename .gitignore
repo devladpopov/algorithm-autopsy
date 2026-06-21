@@ -1,0 +1,16 @@
+# Private/bot files
+SOUL.md
+CLAUDE.md
+VISION.md
+main-memory.md
+topic-memory.md
+recent-messages.jsonl
+CHECKPOINT.md
+.topic-link
+__pycache__/
+*.pyc
+.env
+
+# Private drafts and plans
+PUBLICATION-PLAN.md
+drafts/

@@ -6,6 +6,18 @@ Most foundational algorithms (30+ years old) are copied between textbooks, lectu
 
 ## Findings
 
+### Bug Summary
+
+**5 buggy implementations** found in TheAlgorithms/Python (190k+ stars) out of 12 audited. 8,357 total tests.
+
+| Algorithm | Category | Bug | Severity |
+|-----------|----------|-----|----------|
+| Boyer-Moore | String search | Dead shift code (for-loop variable reassignment) | HIGH |
+| PageRank | Information Retrieval | Ranks init to 1 not 1/n, no dangling nodes, no convergence | HIGH |
+| Minimax | Game Theory | `RecursionError` on non-power-of-2 inputs | CRITICAL |
+| Spearman | Statistics | Wrong result for tied data, `ZeroDivisionError` on n=1 | HIGH |
+| A* | Graph | O(n log n) priority queue instead of O(log n) | MEDIUM |
+
 ### Boyer-Moore String Search (1977)
 
 | # | Bug | Severity | Where |
@@ -15,16 +27,21 @@ Most foundational algorithms (30+ years old) are copied between textbooks, lectu
 | 3 | **Missing good suffix rule** in Princeton algs4 `BoyerMoore.java` (Sedgewick). Only bad character rule implemented. Not full Boyer-Moore, does not achieve O(m+n) worst-case. | MEDIUM | Widely taught in universities |
 | 4 | **Delta2 table bugs** in Microsoft STL `std::boyer_moore_searcher`. Fixed in 2019 after applying Rytter correction (1980). The original 1977 paper did not contain a correct algorithm for computing the good suffix table. | CRITICAL (fixed) | [MS STL #713](https://github.com/microsoft/STL/issues/713) |
 
-### Audit Pipeline (planned)
+### PageRank (1998)
 
-| Algorithm | Year | Category | Status |
-|-----------|------|----------|--------|
-| Boyer-Moore | 1977 | String matching | **Phase 1 complete** |
-| BLAST | 1990 | Bioinformatics | Research done, no formal audit exists |
-| HMMER | 1998 | Bioinformatics | Planned |
-| MUSCLE | 2004 | Bioinformatics | Planned |
-| Aho-Corasick | 1975 | String matching | Planned |
-| A* | 1968 | Graph | Planned |
+Ranks initialized to 1 instead of 1/n (sum = 3.0 for 3 nodes, not 1.0). No dangling node handling (23% error). Default 3 iterations with no convergence check. [Details](audits/SOCIAL-SCIENCE-AUDIT-REPORT.md)
+
+### Minimax (1928)
+
+`math.log(len(scores), 2)` returns float; `depth == height` compares int to float. For non-power-of-2 inputs (3, 5, 6, 7, 9...) the base case is never reached: infinite recursion, `RecursionError`. Doctests pass only because they use size 8. [Details](audits/SOCIAL-SCIENCE-AUDIT-REPORT.md)
+
+### Spearman Rank Correlation (1904)
+
+Tied values get sequential ranks instead of averaged ranks. For `x=[1,1,1,1], y=[1,2,3,4]` reports correlation 1.0 (correct: 0.5). Also `ZeroDivisionError` on n=1. [Details](audits/SOCIAL-SCIENCE-AUDIT-REPORT.md)
+
+### Algorithms that passed (7/12)
+
+KMP, Rabin-Karp, Aho-Corasick, Dijkstra, Bellman-Ford, Floyd-Warshall, Gale-Shapley stable matching. All correct across thousands of random tests. [Details](audits/FULL-AUDIT-REPORT.md)
 
 ## How it works
 

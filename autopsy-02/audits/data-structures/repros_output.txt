@@ -1,0 +1,86 @@
+
+[1] AvlTree.insert loses/duplicates nodes: insert 1,2,5,3,4
+    actual:   in-order [3,4,5,2,5], contains(1)=false
+    expected: in-order [1,2,3,4,5], contains(1)=true
+
+[2] AvlTree.insert parent pointer corruption: insert 8,6,3,1,4,5 then 5.parent
+    actual:   tree 4(3(1(.,.),.),6(5(.,.),8(.,.))); node(5).parent = null
+    expected: node(5).parent = 6 (its actual parent)
+
+[3] RedBlackTree.insert unique keys 1,3,2,4,5 loses nodes 1 and 2
+    actual:   in-order [3,4,5]; contains(1)=false, contains(2)=false; tree 4B(3R(.,.),5R(.,.))
+    expected: in-order [1,2,3,4,5]
+
+[4] RedBlackTree.insert unique keys 1,3,2,4 -> red-red violation
+    actual:   2B(1R(.,.),3R(.,4R(.,.))); violation: red 3 has red child
+    expected: 2B(1B(.,.),3B(.,4R)) and no violation
+
+[5] RedBlackTree.insert unique keys 1,4,2,3,5,6 -> crash
+    actual:   THROWS TypeError: null is not an object (evaluating 'node.meta')
+
+[6] RedBlackTree.balance re-balances a BLACK node: insert 6,2,1,3,7,4,5 (parent pointers fine here)
+    actual:   4B(2B(1B(.,.),3R(.,.)),6R(5R(.,.),7B(.,.))); violation: black-height 2 != 1 under 2
+    expected: no red-black violation
+
+[7] RedBlackTree.insert of a duplicate recolours existing node: insert 5,7,3,2,7
+    actual:   before dup 5B(3B(2R(.,.),.),7B(.,.)), after insert(7) 5B(3B(2R(.,.),.),7R(.,.)); violation: black-height 2 != 1 under 5
+    expected: tree unchanged, no violation
+
+[8] AvlTree.remove leaves tree unbalanced (child bf==0 case): insert 8,9,7,4,2; remove 8
+    actual:   9(4(2(.,.),7(.,.)),.); root balance factor = 2
+    expected: |balance factor| <= 1 everywhere (e.g. 4(2,9(7,.)))
+
+[9] AvlTree.remove only re-balances the root: insert 4,2,6,1,3,5,7,8; remove 5
+    actual:   before 4(2(1(.,.),3(.,.)),6(5(.,.),7(.,8(.,.)))); after 4(2(1(.,.),3(.,.)),6(.,7(.,8(.,.)))); bf(node 6) = -2
+    expected: subtree at 6 rotated to 7(6,8), all |bf| <= 1
+
+[10] BinarySearchTree.remove of a one-child node leaves stale parent; later remove() is a silent no-op: insert 5,6,8; remove 6; remove 8
+    actual:   remove(8) returned true; contains(8)=true; toString()="5,8"
+    expected: contains(8)=false; toString()="5"
+
+[11] BinarySearchTree.remove of a two-child node nulls the parent of a node that stays in the tree: insert 5,3,8,7,9; remove 8,7,9
+    actual:   in-order [3,5,null]; toString()="3,5,"
+    expected: in-order [3,5]; toString()="3,5"
+
+[12] BinarySearchTree: removing the last value leaves an `undefined` phantom root: insert 0; remove 0; insert 6
+    actual:   toString()=",6", root.value=undefined, root.right=6
+    expected: toString()="6", root.value=6
+
+[13] Heap.remove treats a falsy parent (0) as "no parent": MaxHeap add 10,0,9,-1,-2,8,7,-3,-4,-5,-6,6; remove(-1)
+    actual:   container [10,0,9,6,-2,8,7,-3,-4,-5,-6] (6 is child of 0); poll order [10,9,8,7,0,6,-2,-3,-4,-5,-6]
+    expected: poll order [10,9,8,7,6,0,-2,-3,-4,-5,-6]
+
+[14] Heap.remove, MinHeap mirror: add -10,0,-9,1,2,-8,-7,3,4,5,6,-6; remove(1)
+    actual:   poll order [-10,-9,-8,-7,0,-6,2,3,4,5,6]
+    expected: poll order [-10,-9,-8,-7,-6,0,2,3,4,5,6]
+
+[15] PriorityQueue.remove(item) removes every item with the same PRIORITY
+    actual:   after remove('a'): hasValue('b')=false, contents ["c"]
+    expected: hasValue('b')=true, contents ['b','c']
+
+[16] MinHeapAdhoc / MaxHeapAdhoc constructor(array) crashes
+    actual:   new MinHeapAdhoc([3,1,2]) -> TypeError: undefined is not an object (evaluating 'this.heap'); new MaxHeapAdhoc([3,1,2]) -> TypeError: undefined is not an object (evaluating 'this.heap')
+    expected: heaps containing 1,2,3
+
+[17] LinkedList.insert(value, length) does not update tail; next append() drops a node
+    actual:   toString()="1,3", tail=3
+    expected: toString()="1,2,3", tail=3
+
+[18] Trie.deleteWord does not delete words with non-BMP characters (emoji)
+    actual:   doesWordExist('😀') after delete = true
+    expected: false
+
+[19] LRUCache.get('toString') on an empty cache (key named like an Object.prototype member)
+    actual:   THROWS TypeError: undefined is not an object (evaluating 'prevNode.next = nextNode')
+
+[20] HashTable.set('__proto__', 1): has()/getKeys() disagree with get()
+    actual:   get=1, has=false, getKeys=[]
+    expected: get=1, has=true, getKeys=["__proto__"]
+
+[21] PriorityQueue README: equal priorities "are served according to their order in the queue" - not true for a binary heap
+    actual:   ["a","d","c","b"]
+    expected: ["a","b","c","d"] per README
+
+[complexity] AvlTree.insert
+    AvlTree.insert, height-getter calls per insert (n -> calls): 500->2384, 1000->4390, 2000->8249, 4000->15822
+      growth for 8x n: 6.64x (O(log n) would be ~1.3x, O(n) ~8x)

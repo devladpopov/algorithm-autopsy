@@ -1,0 +1,108 @@
+### articulation
+total 1
+#2225 [open] [Docs]: 9 hotlinked images in algorithm READMEs return 404 (GeeksforGeeks + ivanyu.me uploads)
+### bridges
+total 2
+#2225 [open] [Docs]: 9 hotlinked images in algorithm READMEs return 404 (GeeksforGeeks + ivanyu.me uploads)
+#18 [closed PR] Finish main part of translation
+### disconnected
+total 4
+#2111 [open PR] fix(detect-cycle): add JSDoc return type and improve early-exit comments in detectUndirectedCycle
+#2080 [open PR] fix(graph): return ordered cycle path and add early exit in detectUndirectedCycle
+#2057 [open] Incorrect Cycle Path Construction in detectUndirectedCycle
+#2187 [open PR] Fix correctness bugs found in a full-codebase audit
+### detectUndirectedCycle
+total 7
+#2057 [open] Incorrect Cycle Path Construction in detectUndirectedCycle
+#2100 [open PR] Fix: Return cycle path as array instead of object map in detectUndirectedCycle
+#2111 [open PR] fix(detect-cycle): add JSDoc return type and improve early-exit comments in detectUndirectedCycle
+#2080 [open PR] fix(graph): return ordered cycle path and add early exit in detectUndirectedCycle
+#323 [open] Find cycles result is wrong!
+#2198 [closed PR] fix(#2057): return ordered cycle path array instead of parent mapping in detectUndirectedCycle
+#2187 [open PR] Fix correctness bugs found in a full-codebase audit
+### eulerian
+{"message":"API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)","documentation_url":"ht
+### salesman
+{"message":"API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)","documentation_url":"ht
+### TSP
+{"message":"API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)","documentation_url":"ht
+### depthFirstSearch
+total 1
+#219 [open PR] Add Linear prime sieve
+### breadthFirstSearch
+total 2
+#891 [open PR] Update breadthFirstSearch.js
+#666 [closed PR] Update breadthFirstSearch.js
+### bellman
+total 2
+#1143 [open PR] Translate to ru
+#196 [open] Suggestion: ship production ready build to npm
+### self-loop
+total 1
+#2057 [open] Incorrect Cycle Path Construction in detectUndirectedCycle
+### findEdge
+total 1
+#80 [closed PR]  Fix the findEdge method of the graph
+### parallel+edges
+total 0
+### dijkstra
+{"message":"API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)","documentation_url":"ht
+### eulerian
+total 1
+#883 [open] Does the eulerian-path find all possible cycles?
+### euler
+total 1
+#911 [open] Set Euler diagrams 
+### fleury
+total 1
+#2187 [open PR] Fix correctness bugs found in a full-codebase audit
+### salesman
+total 2
+#18 [closed PR] Finish main part of translation
+#35 [closed PR] Added Explanation of Branch And Bound Approach for solving n-queen Problem in README section
+### TSP
+total 2
+#133 [closed PR] Add few algos implementation
+#22 [closed] TSP or TPP Algorithm
+### dijkstra
+total 9
+#2064 [open PR] dijkstra algo fixed ,duplicate files removed
+#2098 [open PR] Add Dijkstra and BFS Algorithms to Graph Algorithms
+#2056 [open] Potential Inefficiency and Missed Priority Updates in Dijkstra's Algorithm Implementation
+#219 [open PR] Add Linear prime sieve
+#300 [open PR] switch shift to pop
+#12 [open] A* algorithm?
+#644 [closed PR] Add Korean translation. 
+#563 [closed] Getting every possible shortest path between two nodes
+#249 [closed] How does this Infinity math work?
+### traversal twice
+total 0
+### visited twice
+total 1
+#2187 [open PR] Fix correctness bugs found in a full-codebase audit
+### start vertex
+total 4
+#2057 [open] Incorrect Cycle Path Construction in detectUndirectedCycle
+#2187 [open PR] Fix correctness bugs found in a full-codebase audit
+#2111 [open PR] fix(detect-cycle): add JSDoc return type and improve early-exit comments in detectUndirectedCycle
+#2198 [closed PR] fix(#2057): return ordered cycle path array instead of parent mapping in detectUndirectedCycle
+### adjacency matrix
+total 2
+#830 [open] Provide possible paths from A to B in a directed graph
+#563 [closed] Getting every possible shortest path between two nodes
+### graphBridges
+total 1
+#2187 [open PR] Fix correctness bugs found in a full-codebase audit
+### articulationPoints
+total 2
+#2225 [open] [Docs]: 9 hotlinked images in algorithm READMEs return 404 (GeeksforGeeks + ivanyu.me uploads)
+#2187 [open PR] Fix correctness bugs found in a full-codebase audit
+### self loop
+total 1
+#2057 [open] Incorrect Cycle Path Construction in detectUndirectedCycle
+### multigraph
+total 0
+### hamiltonian
+total 2
+#383 [open] Hamiltonian Path with a directed graph
+#883 [open] Does the eulerian-path find all possible cycles?

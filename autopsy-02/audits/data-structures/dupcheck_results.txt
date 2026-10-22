@@ -1,0 +1,246 @@
+### avl
+total 16
+#485 [issue open] 2020-05-02 AVL remove need recursive from removeNode
+#325 [issue open] 2019-03-14 Bug in AVL Tree rorateLeftLeft and rotateRightRight
+#427 [issue open] 2019-11-15 AVL Tree rotation method is very confusing
+#329 [PR open] 2019-03-20 Fix Bug in AVL Tree rorateLeftLeft and rotateRightRight #325
+#377 [PR open] 2019-07-31 Fixed balancing of Avl tree after insertion or deletion
+#89 [issue open] 2018-07-03 Translate to russian
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#791 [PR closed] 2021-10-19 docs: add README.zh-CN.md
+#552 [PR closed] 2020-10-01 Create AVL Tree
+#327 [issue closed] 2019-03-19 Proposal - we can rewrite everything in the Typescript?
+#264 [issue closed] 2018-12-09 Images of `AVL Tree Rotations` not accessible
+#13 [issue closed] 2018-05-24 AVL tree does not rebalance after removal
+#205 [PR closed] 2018-09-10 added largest subarray sum algorithm, AVL Tree remove function, egg dropping, all permutations algorithms
+#33 [PR closed merged] 2018-05-30 Fix remove method in AvlTree: Nodes can not re-balance.
+#37 [issue closed] 2018-05-31 bug in AVL tree rotateLeftRight and rotateRightLeft
+#79 [PR closed] 2018-06-25 Remove redundant node detachments
+### AvlTree
+total 6
+#485 [issue open] 2020-05-02 AVL remove need recursive from removeNode
+#427 [issue open] 2019-11-15 AVL Tree rotation method is very confusing
+#325 [issue open] 2019-03-14 Bug in AVL Tree rorateLeftLeft and rotateRightRight
+#329 [PR open] 2019-03-20 Fix Bug in AVL Tree rorateLeftLeft and rotateRightRight #325
+#33 [PR closed merged] 2018-05-30 Fix remove method in AvlTree: Nodes can not re-balance.
+#79 [PR closed] 2018-06-25 Remove redundant node detachments
+### rotateLeftLeft
+total 4
+#427 [issue open] 2019-11-15 AVL Tree rotation method is very confusing
+#325 [issue open] 2019-03-14 Bug in AVL Tree rorateLeftLeft and rotateRightRight
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#37 [issue closed] 2018-05-31 bug in AVL tree rotateLeftRight and rotateRightLeft
+### red-black
+total 9
+#561 [PR open] 2020-10-11 Fix RedBlackTree rotations
+#528 [issue closed] 2020-08-12 There is a spelling mistake. It should be "grandParent" not "granParent"
+#540 [PR closed merged] 2020-09-15 Fix typo in comment
+#683 [issue closed] 2021-04-05 German translation
+#428 [issue closed] 2019-11-17 Red Black Tree nodeComparator TypeError
+#132 [issue closed] 2018-08-02 the picture about Red-Black Tree is not match
+#33 [PR closed merged] 2018-05-30 Fix remove method in AvlTree: Nodes can not re-balance.
+#29 [issue closed] 2018-05-29 Add Red Black Tree
+#35 [PR closed] 2018-05-30 Added Explanation of Branch And Bound Approach for solving n-queen Problem in README section
+### RedBlackTree
+total 6
+#561 [PR open] 2020-10-11 Fix RedBlackTree rotations
+#939 [issue open] 2022-09-26 read-black-tree
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#528 [issue closed] 2020-08-12 There is a spelling mistake. It should be "grandParent" not "granParent"
+#540 [PR closed merged] 2020-09-15 Fix typo in comment
+#35 [PR closed] 2018-05-30 Added Explanation of Branch And Bound Approach for solving n-queen Problem in README section
+### BinarySearchTree+remove
+total 2
+#2222 [PR open] 2026-10-06 fix(tree): set parent pointer in BinaryTreeNode.replaceChild
+#310 [issue open] 2019-02-16 BinarySearchTree can't remove a root node correctly
+### parent+remove+tree
+total 6
+#2222 [PR open] 2026-10-06 fix(tree): set parent pointer in BinaryTreeNode.replaceChild
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#460 [issue open] 2020-02-07 should it be this right ? 
+#683 [issue closed] 2021-04-05 German translation
+#57 [issue closed] 2018-06-08 What should be returned by the remove method of the BinarySearchTreeNode?
+#60 [PR closed] 2018-06-10 Fix bug in 'BinarySearchTreeNode.js
+### replaceChild
+total 10
+#2222 [PR open] 2026-10-06 fix(tree): set parent pointer in BinaryTreeNode.replaceChild
+#2115 [PR open] 2026-03-17 fix: preserve parent in BinaryTreeNode.replaceChild
+#2117 [PR open] 2026-03-17 fix(tree): preserve parent pointer in replaceChild
+#1102 [issue open] 2024-01-31 `replaceChild` method in BinaryTreeNode is not correct
+#484 [issue open] 2020-05-02 BinaryTreeNode replaceChild didn't set parent current
+#2118 [PR open] 2026-03-17 fix: preserve parent when replacing a binary tree child
+#369 [issue open] 2019-07-01 replaceChild in BinaryTreeNode, the replacementNode's parent is incorrect
+#325 [issue open] 2019-03-14 Bug in AVL Tree rorateLeftLeft and rotateRightRight
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#1104 [PR closed] 2024-02-13 replaceChild method fixed
+### heap+remove
+total 8
+#2224 [PR open] 2026-10-06 test(heap): cover heapify up when removing an item
+#2223 [PR open] 2026-10-06 fix(priority-queue): remove() should match items by value, not by priority
+#709 [PR open] 2021-05-22 perf: improve heap remove
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#1460 [PR closed] 2024-11-01 Update MaxHeapAdhoc.js
+#179 [issue closed] 2018-08-25 heap remove function has bug
+#174 [PR closed] 2018-08-20 Fix Heap.remove() bug
+#50 [PR closed merged] 2018-06-04  Fix the remove method for the MinHeap
+### MinHeap+remove
+total 3
+#2224 [PR open] 2026-10-06 test(heap): cover heapify up when removing an item
+#174 [PR closed] 2018-08-20 Fix Heap.remove() bug
+#50 [PR closed merged] 2018-06-04  Fix the remove method for the MinHeap
+### parentItem
+total 1
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+### PriorityQueue+remove
+total 5
+#2223 [PR open] 2026-10-06 fix(priority-queue): remove() should match items by value, not by priority
+#2064 [PR open] 2025-08-01 dijkstra algo fixed ,duplicate files removed
+#2056 [issue open] 2025-06-26 Potential Inefficiency and Missed Priority Updates in Dijkstra's Algorithm Implementation
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#300 [PR open] 2019-02-08 switch shift to pop
+### changePriority
+total 4
+#2223 [PR open] 2026-10-06 fix(priority-queue): remove() should match items by value, not by priority
+#2056 [issue open] 2025-06-26 Potential Inefficiency and Missed Priority Updates in Dijkstra's Algorithm Implementation
+#186 [PR open] 2018-08-28 Add support for complex data to PriorityQueue
+#251 [issue closed] 2018-11-20 Primm's algorithm and PrioirtyQueue test reference methods that don't exist
+### MinHeapAdhoc
+total 2
+#1124 [PR open] 2024-04-12 fix(heap): `this` is `undefined`
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+### MaxHeapAdhoc
+total 3
+#1124 [PR open] 2024-04-12 fix(heap): `this` is `undefined`
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#1460 [PR closed] 2024-11-01 Update MaxHeapAdhoc.js
+### LinkedList+insert
+total 8
+#2220 [PR open] 2026-09-19 Fix LinkedList.insert not updating the tail when inserting after the last node
+#2106 [PR open] 2026-02-15 fix: update tail when inserting at the end of LinkedList
+#2153 [PR open] 2026-04-25 fix: resolve LinkedList insert tail bug, GraphEdge key caching, and S…
+#1016 [issue open] 2023-04-05 bug(linked-list): `insert` method duplicates value of head in tail
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#1052 [PR closed] 2023-07-21 modified insert method in linkedlist and .eslintrc
+#774 [PR closed merged] 2021-09-24 Add linkedList insert method
+#499 [issue closed] 2020-06-04 Linked List need a insertion operation.
+### linked+list+tail
+total 13
+#2220 [PR open] 2026-09-19 Fix LinkedList.insert not updating the tail when inserting after the last node
+#583 [issue open] 2020-12-02 Linked List: Define a Cycle
+#1016 [issue open] 2023-04-05 bug(linked-list): `insert` method duplicates value of head in tail
+#655 [issue open] 2021-02-24 Maybe there are some redundent code in Doubly-Linked-List
+#2052 [PR open] 2025-05-24 Add cycle creation utility and detection tests for Linked List (Fixes #583)
+#2153 [PR open] 2026-04-25 fix: resolve LinkedList insert tail bug, GraphEdge key caching, and S…
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#1001 [issue closed] 2023-02-28 confusing insertion and deletion time complexity on linked list
+#344 [issue closed] 2019-04-24 Pseudocode for Delete is wrong (LinkedList)
+#499 [issue closed] 2020-06-04 Linked List need a insertion operation.
+#191 [issue closed] 2018-08-30 It has some mistakes in Linked List.
+#69 [issue closed] 2018-06-14 removal from linkedlist
+#47 [PR closed merged] 2018-06-03 Fix the prepend method for the LinkedList
+### trie+delete
+total 2
+#168 [PR closed] 2018-08-15 Add Trie Remove Words
+#181 [PR closed merged] 2018-08-27 Feature: Add Trie.deleteWord and TrieNode.removeChild
+### deleteWord
+total 2
+#181 [PR closed merged] 2018-08-27 Feature: Add Trie.deleteWord and TrieNode.removeChild
+#168 [PR closed] 2018-08-15 Add Trie Remove Words
+### emoji
+total 2
+#1459 [PR closed] 2024-11-01 Update CODE_OF_CONDUCT.md
+#683 [issue closed] 2021-04-05 German translation
+### LRU
+total 4
+#2220 [PR open] 2026-09-19 Fix LinkedList.insert not updating the tail when inserting after the last node
+#987 [PR closed merged] 2023-01-27 update LRU Cache translation for ko-KR
+#980 [PR closed merged] 2023-01-23 Add an example of the LRU (Least Recently Used) Cache implementation
+#683 [issue closed] 2021-04-05 German translation
+### LRUCache
+total 2
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#980 [PR closed merged] 2023-01-23 Add an example of the LRU (Least Recently Used) Cache implementation
+### HashTable+__proto__
+total 1
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+### hash+table
+total 16
+#529 [issue open] 2020-08-20 Inefficient Hash Table implementation
+#596 [PR open] 2020-12-18 fix: implementing Pearson Hashing in Hash Table (#529)
+#2220 [PR open] 2026-09-19 Fix LinkedList.insert not updating the tail when inserting after the last node
+#2121 [PR open] 2026-03-20 Add Traditional Chinese translations for data structures
+#846 [PR open] 2022-02-01 Tweaked get function of HashTable
+#1037 [PR open] 2023-05-08 addressed issue 1033, changed while to if in LinkedList and add new b…
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#656 [issue open] 2021-02-24 Hard to view some images or diagrams in GitHub's Dark Mode
+#948 [PR closed merged] 2022-10-09 feat: added Ukrainian translations for hash table
+#843 [PR closed merged] 2022-01-22  Add Korean translation for data-structures Hash Table & Heap
+#775 [PR closed merged] 2021-09-29 fixed spelling error for hash-table (ru)
+#767 [PR closed merged] 2021-09-16 Add Korean translation
+#447 [PR closed merged] 2020-01-03 Modify HashTable
+#318 [PR closed merged] 2019-03-04 Translate hash table into Russian. Add links into English README
+#56 [issue closed] 2018-06-08 Collision resolution in hash-table
+#35 [PR closed] 2018-05-30 Added Explanation of Branch And Bound Approach for solving n-queen Problem in README section
+### BST+parent
+total 4
+#2222 [PR open] 2026-10-06 fix(tree): set parent pointer in BinaryTreeNode.replaceChild
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#310 [issue open] 2019-02-16 BinarySearchTree can't remove a root node correctly
+#74 [PR closed merged] 2018-06-19 Fix BST removal method
+### audit
+total 2
+#2187 [PR open] 2026-07-03 Fix correctness bugs found in a full-codebase audit
+#2182 [PR open] 2026-06-11 Fix vulnerable transitive dev dependencies
+### height+avl
+#329 [PR open] Fix Bug in AVL Tree rorateLeftLeft and rotateRightRight #325
+#552 [PR closed] Create AVL Tree
+#33 [PR closed] Fix remove method in AvlTree: Nodes can not re-balance.
+#79 [PR closed] Remove redundant node detachments
+### balanceFactor
+### avl+performance
+#2187 [PR open] Fix correctness bugs found in a full-codebase audit
+### avl+complexity
+#2187 [PR open] Fix correctness bugs found in a full-codebase audit
+#327 [issue closed] Proposal - we can rewrite everything in the Typescript?
+### trie+unicode
+### Trie
+#436 [issue open] Trie.test.js contains wrong assertion
+#2042 [PR open] [Documentation] Appended fallback comment in assets.
+#171 [PR open] choose pivot from median of three elements for quicksort
+#1071 [PR closed] feat: added korean translation for trie
+#965 [PR closed] feat: added Ukrainian translations for graph, heap, linked-list, etc.
+#490 [PR closed] Update README.pt-BR.md
+#159 [PR closed] Add karatsubaMultiplication
+#324 [PR closed] Feature/translate trie
+#262 [PR closed] Update the linke of trie to the chinese version
+#108 [issue closed] Trie - remove words
+#168 [PR closed] Add Trie Remove Words
+#175 [PR closed] Fix method Trie::doesWordExist()
+#181 [PR closed] Feature: Add Trie.deleteWord and TrieNode.removeChild
+#177 [PR closed] Fix TrieNode.addChild so substrings get marked as complete words
+#93 [PR closed] Fix some errors in README.md 
+#27 [PR closed] Use Map for TrieNode children
+#35 [PR closed] Added Explanation of Branch And Bound Approach for solving n-queen Problem in README section
+### unicode
+#307 [issue open] levenshteinDistance does not support unicode characters
+#304 [PR open] Fixes bugs related to unicode support in polynomial-hash functions
+#2187 [PR open] Fix correctness bugs found in a full-codebase audit
+#762 [PR closed] Bump tar from 4.4.13 to 4.4.19
+#683 [issue closed] German translation
+#176 [PR closed] fix longestCommonSubstring() to handle unicode characters (#129)
+#129 [issue closed] Longest common substring does not handle unicode properly
+#110 [PR closed] Refactor Rabin-Karp
+### priority+queue+order
+#251 [issue closed] Primm's algorithm and PrioirtyQueue test reference methods that don't exist
+### priority+queue+stable
+### same+priority
+#2223 [PR open] fix(priority-queue): remove() should match items by value, not by priority
+#2064 [PR open] dijkstra algo fixed ,duplicate files removed
+#186 [PR open] Add support for complex data to PriorityQueue
+#2187 [PR open] Fix correctness bugs found in a full-codebase audit
+#1070 [issue open] priorityQueue does not poll out as expected
+### red+black+insert
+### red-black+parent
+#683 [issue closed] German translation
+### uncle
+### isNodeBlack

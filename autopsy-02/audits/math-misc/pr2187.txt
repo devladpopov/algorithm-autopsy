@@ -1,0 +1,63 @@
+None
+Fix correctness bugs found in a full-codebase audit open 2026-07-03T16:22:56Z moshejs
+## Summary
+
+A systematic audit of the repository (every claimed bug was verified by executing a concrete failing input before fixing) uncovered a number of correctness bugs, wrong documentation claims, and a few gaps. This PR fixes them, adds 54 regression tests, and keeps the full suite green: **179 suites / 641 tests pass, ESLint clean**.
+
+## Data structure fixes
+
+- **AVL tree** — four defects: `rotateLeftLeft`/`rotateRightRight` always attached the rotated-up node to a fixed side of the parent, losing whole subtrees when the unbalanced node sat on the other side (repro: insert `50, 30, 70, 65, 60` → node 30 vanished); all rotations corrupted parent pointers by attaching a transferred child before detaching it (`setLeft`/`setRight` detach logic then nulled the fresh parent reference); `balance()` ignored the zero-balance-factor child case that removals produce; and `remove()` only balanced the root once instead of retracing from the deepest affected node. A 200-operation randomized insert/remove invariant test now guards all of this.
+- **BinaryTreeNode.replaceChild** never updated the promoted child's parent pointer, breaking parent chains after every one-child BST removal.
+- **BST remove** unconditionally nulled the parent pointer of nodes that stayed in the tree (two-children case) and erased an empty root with `undefined` while `insert` checks for `null`, so a re-used tree grew a phantom root.
+- **Heap.remove** used `!parentItem` to mean "no parent", so parent *values* of `0`/`''`/`false` heapified in the wrong direction — PriorityQueue (default priority 0) was the common victim.
+- **LinkedList.insert** at index == length linked the node after the tail without updating `tail`; the next `append` silently dropped it.
+- **RedBlackTree** repainted the existing node red when inserting a duplicate value, breaking the red-red invariant.
+- **MinHeapAdhoc/MaxHeapAdhoc** crashed on any non-empty constructor array (`heap.forEach(this.add)` loses `this`).
+- **LRUCache / HashTable** misbehaved with keys inherited from `Object.prototype` (`'constructor'`, `'__proto__'`) — both registries now use prototype-less objects.
+- **SegmentTree** crashed on an empty input array (`log2(0)` → array length −1).
+
+## Graph algorithm fixes
+
+- `articulationPoints`, `graphBridges`, `detectUndirectedCycle` only examined the first connected component.
+- `eulerianPath` crashed on valid inputs (bridge detection ran from a vertex Fleury had already isolated) and on disconnected even-degree graphs; it now validates connectivity and rejects directed graphs explicitly.
+- `bfTravellingSalesman` never counted the closing edge's weight and accepted "tours" that skipped vertices.
+- `floydWarshall` mixed two conventions in `nextVertices` (start vertex for direct edges, middle vertex on relaxation), making path reconstruction impossible; now uses the standard successor convention, with a path-reconstruction test.
+- `bellmanFord` silently returned finite distances for graphs with negative cycles; it now throws after the standard extra relaxation pass.
+- `Graph.addEdge` re-attached edge objects already present in a vertex's edge list, so building an MST via Kruskal/Prim corrupted the *input* graph's vertex degrees.
+- Default BFS/DFS `allowTraversal` never marked the start vertex seen, so a directed cycle re-entered it (`A→B→C→A` visited A twice).
+- `stronglyConnectedComponents` left the caller's graph permanently reversed; `prim` now throws on disconnected graphs instead of silently returning a partial tree.
+
+## Math / ML fixes
+
+- Inverse FFT applied numeric `/=` to `ComplexNumber` objects → `NaN` for every signal; the test helper was NaN-blind (`Math.abs(NaN) > delta` is `false`) and is fixed too. Forward/inverse FFT kernels were also swapped relative to the standard convention and to `discreteFourierTransform.js` in the same folder.
+- `kMeans` produced `NaN` centroids for empty clusters and returned cluster `-1` for every point; `euclideanDistance` rounded to 2 decimals (`toFixed(2)`), destroying kNN tie-breaking.
+- Infinite loops fixed: `bitLength(2**30)` (31-bit `<<` wrap), `fibonacciNth(0)` / `fibonacci(0)`, `squareRoot(2, 17)` (Newton's iteration 2-cycles between adjacent doubles), and `fastPowering` with negative exponents — which are now supported (`2^-3 → 0.125`).
+- `bitsToFloat` now decodes IEEE 754 zeros, subnormals, and ±Infinity/NaN (previously the all-zero bit pattern decoded to 2⁻¹⁵, i.e. zero was unrepresentable).
+- `isPowerOfTwo(0)` returned `true`; `classicPolynome` mutated the caller's coefficients array; `weightedRandom` could return a zero-weight item when `Math.random()` hit exactly 0.
+
+## Sorting / search / sets / string / crypto fixes
+
+- `interpolationSearch` hung forever when the seek value was above the array maximum or between elements of non-uniform data.
+- 0/1 knapsack traceback was broken (single item `{v:5, w:2}`, limit 3 → empty selection, value 0); unbounded knapsack pushed items with zero possible quantity, exceeding the weight limit.
+- `RadixSort` placed shorter strings after `'z'` instead of before `'a'` (`['b','ba']` → `['ba','b']`) and mangled negative integers (now handled); `BucketSort` delegated buckets to RadixSort, which does zero passes on floats — buckets are now comparison-sorted.
+- `rabinKarp`/`PolynomialHash.roll` indexed by UTF-16 code units against a code-point-based `hash()`, so any astral symbol in the window corrupted every subsequent rolling hash; the long-standing commented-out `@TODO: Provide Unicode support` test is now enabled and passing.
+- `zAlgorithm` lost matches when the text contained the internal `'$'` separator (`zAlgorithm('a$a', 'a')` → `[2]` instead of `[0, 2]`).
+- `railFenceCipher` dropped characters on encode and threw on decode with a single rail; `hillCipher` encrypted lowercase input inconsistently with uppercase (`'act'` ≠ `'ACT'`).
+- `hanoiTower(0)` and both permutation generators recursed infinitely on empty input; `dpTopDownJumpGame` copied its memo table on every call (and wrote the seed to index −1), so the claimed memoization never happened; `validParentheses('')` returned `false`, contradicting the README's own vacuous-truth definition.
+
+## Documentation corrections (English READMEs)
+
+Wrong Big-O claims (segment tree build is O(n), BST table now notes the unbalanced worst case, Z-algorithm space is O(|W|+|T|), recursive-staircase brute force is O(n) space), wrong math (polynomial-hash formula exponents, complex-number conjugate identity, square-matrix-rotation described a reflection order that yields a **counterclockwise** rotation), inverted pseudocode conditions (tree BFS, BST findMin/findMax preconditions), an inverted k-means stopping condition, and a few dozen grammar/typo fixes.
+
+## Additions
+
+- **Extended Euclidean algorithm** (`extendedEuclideanAlgorithm.js`) with Bézout coefficients — the euclidean-algorithm README already discussed the identity with nothing computing it.
+- Deque row in the main README complexity table; missing DP section in the best-time-to-buy-sell-stocks README.
+- Honest notes where implementations differ from cheat-sheet values (this repo's heap sort uses O(n) memory; `DisjointSet.js` union is linear vs. the inverse-Ackermann `DisjointSetAdhoc.js`).
+
+## Notes for reviewers
+
+- Two existing tests encoded buggy behavior and were deliberately updated: `floydWarshall.test.js` (asserted the inconsistent `nextVertices` values) and `validParentheses.test.js` (asserted `isValid('') === false`).
+- Two design limitations were documented rather than redesigned: PriorityQueue keys priorities by item value (duplicates share one priority), and Kruskal/Prim MSTs share vertex objects with the source graph (the degree-corruption side effect is fixed here; full isolation would change the API).
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)

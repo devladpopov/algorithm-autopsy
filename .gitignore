@@ -14,3 +14,7 @@ __pycache__/
 # Private drafts and plans
 PUBLICATION-PLAN.md
 drafts/
+
+# Cloned audit targets
+autopsy-02/vendor/
+.playwright-mcp/

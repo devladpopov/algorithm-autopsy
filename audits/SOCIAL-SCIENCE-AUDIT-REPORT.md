@@ -63,10 +63,10 @@ Example: `x = [1, 2, 2, 4]` -- values 2 and 2 should both get rank 2.5, but get 
 | Input | TA result | Correct | Error |
 |-------|-----------|---------|-------|
 | x=[1,2,2,4], y=[1,2,3,4] | 1.000 | 0.950 | 5.3% |
-| x=[1,1,1,1], y=[1,2,3,4] | 1.000 | 0.500 | 100% |
+| x=[1,1,1,1], y=[1,2,3,4] | 1.000 | undefined (nan) | n/a |
 | x=[10,20,20,30,30,30], y=[1..6] | 1.000 | 0.929 | 7.7% |
 
-The all-same-values case is extreme: it reports perfect correlation (1.0) when the true value is 0.5.
+The all-same-values case is extreme: it reports perfect correlation (1.0) when the correlation is undefined (x has zero variance; scipy returns nan). Correction 2026-10-23: an earlier version listed 0.5 as correct, which is only what the no-ties shortcut formula gives.
 
 **Bug 2: ZeroDivisionError on n=1**
 

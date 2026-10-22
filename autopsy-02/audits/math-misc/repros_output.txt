@@ -1,0 +1,99 @@
+[B1] fastFourierTransform(fastFourierTransform([1, 2]), true)
+      actual:   [null,null]
+      expected: [{"re":1,"im":0},{"re":2,"im":0}]
+
+[B2] kNN([[0.001],[0.004]], ['a','b'], [0.0035], 1)
+      actual:   a
+      expected: 'b'  (|0.0035-0.004|=0.0005 < |0.0035-0.001|=0.0025)
+
+[B3] kMeans([[0.001],[0.002],[0.009],[0.010]], 2)
+      actual:   [-1,-1,-1,-1]
+      expected: [0,0,1,1]
+
+[B3] kMeans([[1],[1],[5]], 2)
+      actual:   [-1,-1,-1]
+      expected: [0,0,1]
+
+[B4] squareRoot(6)
+      actual:   3
+      expected: 2  (Math.sqrt(6) = 2.449489742783178)
+
+[B4] squareRoot(3, 1)
+      actual:   1.8
+      expected: 1.7  (Math.sqrt(3) = 1.7320508075688772)  -- the repo's jest test asserts 1.8
+
+[B4] squareRoot(65549, 11)
+      actual:   no result after 3000 ms (killed)
+
+[B5] bitsToFloat16(bits('0000000000000000'))
+      actual:   0.000030517578125
+      expected: 0
+
+[B5] bitsToFloat16(bits('0000000000000001'))
+      actual:   0.000030547380447387695
+      expected: 5.960464477539063e-8  (2^-24, listed in testCases.js)
+
+[B5] bitsToFloat32(Array(32).fill(0))
+      actual:   5.877471754111438e-39
+      expected: 0
+
+[B6] c=[1,2,3]; classicPolynome(c, 2); classicPolynome(c, 2)
+      actual:   11, 17
+      expected: 11, 11  (x^2+2x+3 at x=2)
+
+[B7] hillCipherEncrypt('act', 'gybnqkurp')
+      actual:   TOH
+      expected: 'POH' (same as hillCipherEncrypt('ACT','GYBNQKURP'), per README)
+
+[B7] hillCipherEncrypt('a', 'B')
+      actual:   G
+      expected: 'A'  (key B=1, message a=0: 1*0 mod 26 = 0 -> 'A'; same as hillCipherEncrypt('A','B'))
+
+[B8] bitLength(2 ** 30)
+      actual:   no result after 3000 ms (killed)
+
+[B8] multiplyUnsigned(0, 2 ** 31)
+      actual:   no result after 3000 ms (killed)
+
+[B8] bits/isPowerOfTwo(0)
+      actual:   true
+      expected: false
+
+[B9] isPowerOfTwoBitwise(3 * 2 ** 31)   // 6442450944
+      actual:   true
+      expected: false
+
+[B9] isPowerOfTwoBitwise(5 * 2 ** 32)   // 21474836480
+      actual:   true
+      expected: false
+
+[B10] encodeRailFenceCipher('hello', 1)
+      actual:   "h"
+      expected: "hello"
+
+[B10] decodeRailFenceCipher('hello', 1)
+      actual:   throws TypeError: undefined is not an object (evaluating 'fence[currentRail]')
+      expected: "hello"
+
+[B11] fibonacciNth(0)
+      actual:   no result after 3000 ms (killed)
+
+[B11] fibonacci(0)
+      actual:   no result after 3000 ms (killed)
+
+[B12] uniquePaths(29, 29)
+      actual:   7648690600760441
+      expected: 7648690600760440  (C(56,28) < 2^53; dpUniquePaths(29,29) returns this)
+
+[B12] pascalTriangle(55)[26]
+      actual:   3560597348629859.5
+      expected: 3560597348629860
+
+[B13] leastCommonMultiple(549533988, 76324165)
+      actual:   2747669939.9999995
+      expected: 2747669940
+
+[B14] euclideanAlgorithmIterative(1e8, 1) took 3024 ms (1e8 subtractions); recursive version: <1 ms
+[B14] euclideanAlgorithmIterative(2 ** 53 - 1, 2)
+      actual:   no result after 5000 ms (killed)
+

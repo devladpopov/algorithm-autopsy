@@ -1,0 +1,90 @@
+##### 01_findEdge_self_loop_bellman_ford.mjs
+Graph.findEdge(A, A) on digraph {A->B}
+  actual:   "A_B"
+  expected: null
+  MISMATCH
+bellmanFord {A->B:-3, A->A:9} from A
+  actual:   {"A":-3,"B":-3}
+  expected: {"A":0,"B":-3}
+  MISMATCH
+getAdjacencyMatrix undirected {A-B:2, A-A:5}
+  actual:   [[2,2],[2,null]]
+  expected: [[5,2],[2,null]]
+  MISMATCH
+PR #2187 extra relaxation pass flags a negative cycle
+  actual:   true
+  expected: false
+  MISMATCH
+##### 02_bellman_ford_complexity.mjs
+V=20 E=380 ops=79420 ops/(V*E)=10.4 ops/E=209 time=3ms
+V=40 E=1560 ops=1277640 ops/(V*E)=20.5 ops/E=819 time=10ms
+V=80 E=6320 ops=20470480 ops/(V*E)=40.5 ops/E=3239 time=136ms
+V=160 E=25440 ops=327641760 ops/(V*E)=80.5 ops/E=12879 time=1827ms
+##### 03_multigraph_findEdge.mjs
+dijkstra from A
+  actual:   {"A":0,"B":7}
+  expected: {"A":0,"B":2}
+  MISMATCH
+bellmanFord from A
+  actual:   {"A":0,"B":7}
+  expected: {"A":0,"B":2}
+  MISMATCH
+floydWarshall d[A][B]
+  actual:   7
+  expected: 2
+  MISMATCH
+kruskal MST weight (uses getAllEdges, handles it)
+  actual:   2
+  expected: 2
+  OK
+##### 04_disconnected_ap_bridges_cycle.mjs
+articulationPoints
+  actual:   []
+  expected: ["D"]
+  MISMATCH
+graphBridges
+  actual:   ["A_B"]
+  expected: ["A_B","C_D","D_E"]
+  MISMATCH
+detectUndirectedCycle finds a cycle
+  actual:   false
+  expected: true
+  MISMATCH
+##### 05_eulerian_path_crash.mjs
+eulerianPath on A-B, B-C, B-D, B-E, D-E
+  actual:   THROWS TypeError: undefined is not an object (evaluating 'edgeToDelete.startVertex')
+  expected: an Euler trail, e.g. ["A","B","D","E","B","C"]
+eulerianPath on isolated X + triangle A-B-C
+  actual:   THROWS TypeError: undefined is not an object (evaluating 'edgeToDelete.startVertex')
+  expected: an Euler trail, e.g. ["A","B","C","A"]
+##### 06_tsp.mjs
+TSP directed 3 vertices
+  actual:   ["A","C"]
+  expected: ["A","B","C"]
+  MISMATCH
+TSP K4 (tour weight incl. return edge)
+  actual:   {"tour":["A","B","C","D"],"weight":103}
+  expected: {"tour":["A","B","D","C"],"weight":22}
+  MISMATCH
+##### 07_dfs_bfs_revisit_start.mjs
+DFS from A on undirected A-B (default allowTraversal)
+  actual:   ["A","B","A"]
+  expected: ["A","B"]
+  MISMATCH
+BFS from A on undirected A-B (default allowTraversal)
+  actual:   ["A","B","A"]
+  expected: ["A","B"]
+  MISMATCH
+##### 08_input_mutation.mjs
+A.getDegree() after kruskal(graph) on single edge A-B
+  actual:   2
+  expected: 1
+  MISMATCH
+A.getNeighbors() after kruskal(graph)
+  actual:   ["B","B"]
+  expected: ["B"]
+  MISMATCH
+edge keys after stronglyConnectedComponents(graph) on A->B
+  actual:   ["B_A"]
+  expected: ["A_B"]
+  MISMATCH

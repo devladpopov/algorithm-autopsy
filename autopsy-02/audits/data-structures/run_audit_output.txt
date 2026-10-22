@@ -1,0 +1,150 @@
+
+Suite                                                   seqs   ops     failing  verdict
+------------------------------------------------------------------------------------------
+MinHeap (values 1..6, no zero)                          2000   40719   0        PASS
+MaxHeap (values 1..6, no zero)                          2000   40719   0        PASS
+MinHeap (values -3..3, incl. 0)                         2000   40719   0        PASS
+MaxHeap (values -3..3, incl. 0)                         2000   40719   0        PASS
+MinHeap (values -6..6, long seqs, add-heavy)            2000   120145  8        FAIL
+MaxHeap (values -6..6, long seqs, add-heavy)            2000   120145  12       FAIL
+MinHeap control (values 1..13, long seqs)               2000   120145  0        PASS
+MaxHeap control (values 1..13, long seqs)               2000   120145  0        PASS
+MinHeapAdhoc (add/poll/peek)                            2000   40719   0        PASS
+MaxHeapAdhoc (add/poll/peek)                            2000   40719   0        PASS
+MinHeapAdhoc constructor(array)                         2000   2000    1761     FAIL
+MaxHeapAdhoc constructor(array)                         2000   2000    1761     FAIL
+PriorityQueue (distinct priorities, unique items)       2000   40719   314      FAIL
+PriorityQueue (repeated priorities, unique items)       2000   40719   561      FAIL
+HashTable (colliding keys, sizes 1..32)                 2000   43690   0        PASS
+HashTable (Object.prototype key names)                  2000   43690   1367     FAIL
+BloomFilter (no false negatives)                        2000   33519   0        PASS
+LRUCache (linked-list impl)                             2000   43690   0        PASS
+LRUCacheOnMap                                           2000   43690   0        PASS
+LRUCache (Object.prototype key names)                   2000   43690   1960     FAIL
+Trie (alphabet ab, len<=4)                              2000   40719   0        PASS
+Trie (non-BMP chars, e.g. emoji)                        2000   40719   875      FAIL
+BinarySearchTree (insert/remove/contains)               2000   40719   1006     FAIL
+AvlTree (insert only, unique)                           2000   40719   1165     FAIL
+AvlTree (insert + remove)                               2000   40719   1138     FAIL
+AvlTree (insert + remove, keys 0..39, long seqs)        2000   120145  1755     FAIL
+BinarySearchTree (keys 0..39, long seqs)                2000   120145  1492     FAIL
+RedBlackTree (insert only, keys 0..199, long seqs)      2000   120145  1920     FAIL
+RedBlackTree (insert only, unique values)               2000   40719   1691     FAIL
+RedBlackTree (insert with duplicates)                   2000   40719   1674     FAIL
+SegmentTree (sum/min/max, n=1..33, all ranges)          2000   2000    0        PASS
+FenwickTree (increase/query/queryRange, n=1..40)        2000   43690   0        PASS
+LinkedList (no insert)                                  2000   40719   0        PASS
+LinkedList (with insert(value, index))                  2000   40719   386      FAIL
+DoublyLinkedList                                        2000   40719   0        PASS
+Deque                                                   2000   40719   0        PASS
+Queue                                                   2000   40719   0        PASS
+Stack                                                   2000   40719   0        PASS
+------------------------------------------------------------------------------------------
+TOTAL: 38 suites, 76000 random sequences, 1997773 operations, 18 failing suites
+
+=== FAIL: MinHeap (values -6..6, long seqs, add-heavy) (8/2000 sequences)
+  [heap-property] x8
+    shrunk ops: [["add",-3],["add",6],["add",-5],["add",2],["add",0],["add",3],["add",6],["add",2],["remove",-5],["add",4],["add",-4],["add",-2],["add",3],["add",2],["add",1],["add",-4],["add",4],["add",6],["add",2],["add",6],["add",6],["add",-3],["add",-3],["remove",2]]
+    heap-property: step 23 after remove(2): parent[3]=0 child[8]=-2 in [-4,-3,-4,0,-3,3,1,4,-2,-3,3,6,6,6,4,6,6]
+=== FAIL: MaxHeap (values -6..6, long seqs, add-heavy) (12/2000 sequences)
+  [heap-property] x12
+    shrunk ops: [["add",4],["add",4],["add",-1],["add",-6],["add",-2],["add",-3],["add",0],["add",-5],["add",-3],["add",-4],["add",0],["add",-4],["add",0],["add",-5],["add",-4],["add",-2],["add",5],["add",-4],["add",-6],["add",-6],["add",3],["add",3],["add",1],["remove",-1]]
+    heap-property: step 23 after remove(-1): parent[2]=0 child[6]=1 in [5,4,0,4,3,0,1,-2,-4,0,3,-4,-3,-5,-4,-6,-3,-5,-6,-6,-4,-2]
+=== FAIL: MinHeapAdhoc constructor(array) (1761/2000 sequences)
+  [crash:TypeError] x1761
+    shrunk ops: [["ctor",[0,1,5,2,0,-3,4,6]]]
+    crash: undefined is not an object (evaluating 'this.heap')
+=== FAIL: MaxHeapAdhoc constructor(array) (1761/2000 sequences)
+  [crash:TypeError] x1761
+    shrunk ops: [["ctor",[0,1,5,2,0,-3,4,6]]]
+    crash: undefined is not an object (evaluating 'this.heap')
+=== FAIL: PriorityQueue (distinct priorities, unique items) (314/2000 sequences)
+  [contents] x314
+    shrunk ops: [["add","d",32],["add","e",76],["changePriority","d",76],["remove","e"]]
+    contents: step 3 after remove(e): queue [], expected ["d"]
+=== FAIL: PriorityQueue (repeated priorities, unique items) (561/2000 sequences)
+  [contents] x561
+    shrunk ops: [["add","d",0],["add","e",2],["changePriority","d",2],["remove","e"]]
+    contents: step 3 after remove(e): queue [], expected ["d"]
+=== FAIL: HashTable (Object.prototype key names) (1367/2000 sequences)
+  [getKeys] x1367
+    shrunk ops: [["size",32],["set","__proto__",30]]
+    getKeys: step 0 after set("__proto__"): getKeys()=[] expected ["__proto__"]
+=== FAIL: LRUCache (Object.prototype key names) (1960/2000 sequences)
+  [crash:TypeError] x1960
+    shrunk ops: [["cap",4],["get","__proto__"]]
+    crash: undefined is not an object (evaluating 'prevNode.next = nextNode')
+=== FAIL: Trie (non-BMP chars, e.g. emoji) (875/2000 sequences)
+  [word-set] x875
+    shrunk ops: [["add","😀"],["delete","😀"]]
+    word-set: step 1 after delete("😀"): trie words ["😀"] expected []
+=== FAIL: BinarySearchTree (insert/remove/contains) (1006/2000 sequences)
+  [parent-pointer] x876
+    shrunk ops: [["insert",5],["insert",6],["insert",8],["remove",6]]
+    parent-pointer: step 3 after remove(6): a node.parent does not point to its actual parent
+  [inorder] x130
+    shrunk ops: [["insert",0],["remove",0],["insert",6]]
+    inorder: step 2 after insert(6): in-order [null,6] expected [6]
+=== FAIL: AvlTree (insert only, unique) (1165/2000 sequences)
+  [inorder] x731
+    shrunk ops: [["insert",9],["insert",4],["insert",2],["insert",5],["insert",8]]
+    inorder: step 4 after insert(8): in-order [5,8,9,4,9] expected [2,4,5,8,9]
+  [parent-pointer] x434
+    shrunk ops: [["insert",8],["insert",6],["insert",3],["insert",1],["insert",4],["insert",5]]
+    parent-pointer: step 5 after insert(5): a node.parent does not point to its actual parent
+=== FAIL: AvlTree (insert + remove) (1138/2000 sequences)
+  [avl-balance] x74
+    shrunk ops: [["insert",8],["insert",9],["insert",7],["insert",4],["insert",2],["remove",8]]
+    avl-balance: step 5 after remove(8): node 9: left height 2, right height 0; tree [2,4,7,9]
+  [inorder] x484
+    shrunk ops: [["insert",1],["remove",1],["insert",7]]
+    inorder: step 2 after insert(7): in-order [null,7] expected [7]
+  [parent-pointer] x580
+    shrunk ops: [["insert",3],["insert",6],["insert",5],["insert",9],["insert",8],["insert",7]]
+    parent-pointer: step 5 after insert(7): a node.parent does not point to its actual parent
+=== FAIL: AvlTree (insert + remove, keys 0..39, long seqs) (1755/2000 sequences)
+  [inorder] x936
+    shrunk ops: [["insert",31],["insert",0],["insert",14],["insert",28],["insert",27]]
+    inorder: step 4 after insert(27): in-order [27,28,31,14,31] expected [0,14,27,28,31]
+  [parent-pointer] x751
+    shrunk ops: [["insert",19],["insert",13],["insert",1],["insert",38],["insert",33],["insert",37]]
+    parent-pointer: step 5 after insert(37): a node.parent does not point to its actual parent
+  [avl-balance] x68
+    shrunk ops: [["insert",8],["insert",34],["insert",27],["insert",4],["insert",19],["remove",34]]
+    avl-balance: step 5 after remove(34): node 27: left height 2, right height 0; tree [4,8,19,27]
+=== FAIL: BinarySearchTree (keys 0..39, long seqs) (1492/2000 sequences)
+  [parent-pointer] x1464
+    shrunk ops: [["insert",22],["insert",31],["insert",27],["remove",31]]
+    parent-pointer: step 3 after remove(31): a node.parent does not point to its actual parent
+  [inorder] x28
+    shrunk ops: [["insert",17],["remove",17],["insert",14]]
+    inorder: step 2 after insert(14): in-order [null,14] expected [14]
+=== FAIL: RedBlackTree (insert only, keys 0..199, long seqs) (1920/2000 sequences)
+  [parent-pointer] x1824
+    shrunk ops: [["insert",21],["insert",135],["insert",77]]
+    parent-pointer: step 2 after insert(77): a node.parent does not point to its actual parent
+  [rb-property] x96
+    shrunk ops: [["insert",192],["insert",150],["insert",76],["insert",115],["insert",58],["insert",80],["insert",90]]
+    rb-property: step 6 after insert(90): red node 76 has red child
+=== FAIL: RedBlackTree (insert only, unique values) (1691/2000 sequences)
+  [parent-pointer] x1616
+    shrunk ops: [["insert",8],["insert",17],["insert",15]]
+    parent-pointer: step 2 after insert(15): a node.parent does not point to its actual parent
+  [rb-property] x75
+    shrunk ops: [["insert",21],["insert",12],["insert",5],["insert",15],["insert",23],["insert",17],["insert",18]]
+    rb-property: step 6 after insert(18): black-height mismatch at 12: 2 vs 1
+=== FAIL: RedBlackTree (insert with duplicates) (1674/2000 sequences)
+  [parent-pointer] x1013
+    shrunk ops: [["insert",7],["insert",4],["insert",6]]
+    parent-pointer: step 2 after insert(6): a node.parent does not point to its actual parent
+  [rb-property] x661
+    shrunk ops: [["insert",5],["insert",7],["insert",3],["insert",2],["insert",7]]
+    rb-property: step 4 after insert(7): black-height mismatch at 5: 2 vs 1
+=== FAIL: LinkedList (with insert(value, index)) (386/2000 sequences)
+  [tail] x386
+    shrunk ops: [["prepend",3],["insert",1,1]]
+    tail: step 1 after insert(1,1): tail=3 but last node=1, list [3,1]
+
+=== Complexity probes
+  AvlTree.insert, height-getter calls per insert (n -> calls): 500->2384, 1000->4390, 2000->8249, 4000->15822
+    growth for 8x n: 6.64x (O(log n) would be ~1.3x, O(n) ~8x)

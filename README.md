@@ -37,7 +37,7 @@ Ranks initialized to 1 instead of 1/n (sum = 3.0 for 3 nodes, not 1.0). No dangl
 
 ### Spearman Rank Correlation (1904)
 
-Tied values get sequential ranks instead of averaged ranks. For `x=[1,1,1,1], y=[1,2,3,4]` reports correlation 1.0 (correct: 0.5). Also `ZeroDivisionError` on n=1. [Details](audits/SOCIAL-SCIENCE-AUDIT-REPORT.md)
+Tied values get sequential ranks instead of averaged ranks. For `x=[1,1,1,1], y=[1,2,3,4]` reports perfect correlation 1.0, although correlation is undefined for a constant variable (scipy returns nan); for `x=[1,2,2,4], y=[1,2,3,4]` it reports 1.0 instead of 0.949. Also `ZeroDivisionError` on n=1. [Details](audits/SOCIAL-SCIENCE-AUDIT-REPORT.md)
 
 ### Algorithms that passed (7/12)
 

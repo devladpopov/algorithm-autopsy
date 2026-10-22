@@ -1,0 +1,76 @@
+Algorithm Autopsy #2 - graph audit (seed 20261023)
+
+FAIL 1471/3000   graph/depthFirstSearch: each reachable vertex entered exactly once (default allowTraversal)
+                   e.g. undirected n=2 edges=[[0,1,3]] start=v1 entered=["v1","v0","v1"]
+                   e.g. undirected n=2 edges=[[0,1,4]] start=v1 entered=["v1","v0","v1"]
+FAIL 1471/3000   graph/breadthFirstSearch: each reachable vertex entered exactly once (default allowTraversal)
+                   e.g. undirected n=2 edges=[[0,1,3]] start=v1 entered=["v1","v0","v1"]
+                   e.g. undirected n=2 edges=[[0,1,4]] start=v1 entered=["v1","v0","v1"]
+PASS 3000        graph/breadthFirstSearch: first-visit order is non-decreasing in BFS distance
+PASS 3000        graph DFS+BFS diagnostic: duplicate entries are ONLY the start vertex, re-entered once, iff start has an incoming edge from a reachable vertex
+PASS 3000        dijkstra: distances + predecessor paths vs Floyd-Warshall oracle (simple graphs, w>=0)
+FAIL 493/1000    dijkstra: undirected graph with two parallel edges (keys u_v and v_u accepted by Graph.addEdge)
+                   e.g. undirected n=2 edges=[[0,1,7],[1,0,2]] got={"v0":0,"v1":7} want=[0,2]
+                   e.g. undirected n=2 edges=[[1,0,8],[0,1,6]] got={"v0":0,"v1":8} want=[0,6]
+PASS 3000        bellmanFord: directed, negative weights, no negative cycles, no self-loops
+FAIL 123/3000    bellmanFord: directed, negative weights + non-negative self-loops (no negative cycles)
+                   e.g. directed n=2 edges=[[0,1,-3],[0,0,9]] start=v0 got={"v0":-3,"v1":-3} want=[0,-3]
+                   e.g. directed n=2 edges=[[0,1,-3],[0,0,0]] start=v0 got={"v0":-3,"v1":-3} want=[0,-3]
+PASS 3000        floydWarshall: distances vs oracle (directed w/ negative weights, undirected w>=0)
+PASS 3000        floydWarshall: nextVertices reconstructs a path of the reported length (intermediate-vertex semantics)
+FAIL 850/2000    Graph.getAdjacencyMatrix: entry [u][v] equals weight of edge u->v (simple graphs incl. self-loops)
+                   e.g. undirected n=2 edges=[[0,1,2],[0,0,5]] got=[[2,2],[2,null]] want=[[5,2],[2,null]]
+                   e.g. undirected n=2 edges=[[1,0,1],[1,1,8],[0,0,5]] got=[[1,1],[1,1]] want=[[5,1],[1,8]]
+PASS 1500        kruskal: spanning forest of minimum weight (brute force over edge subsets; incl. disconnected, ties)
+PASS 1034        prim: spanning tree of minimum weight (connected graphs, brute force over edge subsets, ties)
+PASS 1804        articulationPoints: connected undirected graphs vs brute-force vertex removal
+FAIL 299/2196    articulationPoints: disconnected undirected graphs vs brute-force vertex removal
+                   e.g. undirected n=4 edges=[[2,0,6],[3,0,8]] order=[1,2,3,0] got=[] want=["v0"]
+                   e.g. undirected n=4 edges=[[1,2,7],[3,1,1]] order=[0,2,3,1] got=[] want=["v1"]
+PASS 1804        graphBridges: connected undirected graphs vs brute-force edge removal
+FAIL 735/2196    graphBridges: disconnected undirected graphs vs brute-force edge removal
+                   e.g. undirected n=3 edges=[[1,2,7]] order=[0,2,1] got=[] want=["v1_v2"]
+                   e.g. undirected n=3 edges=[[0,1,1]] order=[2,1,0] got=[] want=["v0_v1"]
+PASS 1357        detectUndirectedCycle (DFS): connected graphs, null iff forest, returned cycle valid
+FAIL 91/2643     detectUndirectedCycle (DFS): disconnected graphs, null iff forest
+                   e.g. undirected n=4 edges=[[0,1,9],[3,0,8],[3,1,2]] got=null wantCycle=true
+                   e.g. undirected n=4 edges=[[2,0,2],[0,3,1],[3,2,5]] got=null wantCycle=true
+PASS 4000        detectUndirectedCycleUsingDisjointSet: any graph, true iff not a forest
+PASS 4000        detectDirectedCycle: null iff DAG, returned cycle follows real edges (incl. self-loops)
+PASS 3000        topologicalSort: random DAGs, output is a permutation respecting every edge
+PASS 3000        stronglyConnectedComponents: partition equals mutual-reachability classes
+FAIL 27/2000     eulerianPath: Euler-able graphs WITHOUT isolated vertices -> valid trail using every edge once
+                   e.g. undirected n=8 edges=[[1,4,9],[3,4,2],[4,7,8],[6,2,5],[6,3,3],[1,5,6],[3,7,3],[3,2,4],[6,4,9],[5,0,1],[5,4,3],[2,4,7],[2,5,3]] order=[0,7,2,1,6,5,3,4] got=null -> THROWS TypeError: undefined is not an object (evaluating 'edgeToDelete.startVertex')
+                   e.g. undirected n=8 edges=[[3,4,4],[6,3,9],[3,7,0],[7,6,8],[6,0,3],[0,5,9],[7,4,8],[7,1,3],[2,3,2],[4,5,0],[5,6,7],[3,1,3],[1,2,1],[5,7,9],[0,1,2],[0,3,4]] order=[2,5,1,6,0,7,4,3] got=null -> THROWS TypeError: undefined is not an object (evaluating 'edgeToDelete.startVertex')
+FAIL 31/1000     eulerianPath: Euler-able graphs WITH isolated vertices -> valid trail using every edge once
+                   e.g. undirected n=6 edges=[[0,3,5],[2,3,3],[0,4,3],[0,5,5],[0,2,6],[2,5,5]] order=[3,0,1,5,2,4] got=null -> THROWS TypeError: undefined is not an object (evaluating 'edgeToDelete.startVertex')
+                   e.g. undirected n=7 edges=[[0,3,6],[5,3,0],[1,4,8],[3,1,5],[5,4,9]] order=[6,3,2,0,1,5,4] got=null -> THROWS TypeError: undefined is not an object (evaluating 'edgeToDelete.startVertex')
+PASS 1500        hamiltonianCycle: set of cycles from vertex[0] equals brute-force permutations (n>=3)
+FAIL 857/1500    bfTravellingSalesman: returns a Hamiltonian cycle of minimum total weight (incl. return edge)
+                   e.g. undirected n=3 edges=[[0,1,14]] got=[0,1] weight(with return)=undefined optimal=Infinity
+                   e.g. directed n=3 edges=[[0,1,19],[2,0,10],[1,2,11],[0,2,13]] got=[0,2] weight(with return)=23 optimal=40
+FAIL 493/1500    bfTravellingSalesman: COMPLETE graphs, minimum tour weight (incl. return edge)
+                   e.g. directed n=3 edges=[[1,2,9],[2,0,13],[0,1,13],[2,1,20],[1,0,6],[0,2,8]] got=[0,1,2] weight(with return)=35 optimal=34
+                   e.g. directed n=3 edges=[[2,1,12],[0,1,8],[2,0,13],[1,0,1],[0,2,3],[1,2,1]] got=[0,1,2] weight(with return)=22 optimal=16
+PASS 3000        tree/breadthFirstSearch: enter order equals level order
+PASS 3000        tree/depthFirstSearch: enter = preorder, leave = postorder
+PASS 2000        DisjointSet: inSameSet/find after random unions vs naive labelling
+PASS 2000        DisjointSetAdhoc: connected after random unions vs naive labelling
+FAIL 913/913     kruskal/prim: input graph vertex adjacency unchanged after the call
+                   e.g. undirected n=2 edges=[[1,0,6]]
+  before=v0:v1_v0 v1:v1_v0
+  after =v0:v1_v0/v1_v0 v1:v1_v0/v1_v0
+                   e.g. undirected n=2 edges=[[1,0,8]]
+  before=v0:v1_v0 v1:v1_v0
+  after =v0:v1_v0/v1_v0 v1:v1_v0/v1_v0
+FAIL 842/864     stronglyConnectedComponents: input graph edges unchanged after the call
+                   e.g. directed n=2 edges=[[1,0,5]] before=v0: v1:v1_v0 after=v0:v0_v1 v1:
+                   e.g. directed n=2 edges=[[1,0,8]] before=v0: v1:v1_v0 after=v0:v0_v1 v1:
+
+Bellman-Ford edge-list node visits on complete digraphs (README: worst O(|V||E|), best O(|E|)):
+  V=10 E=90 ops=4860 ops/(V*E)=5.40 ops/E=54.0
+  V=20 E=380 ops=79420 ops/(V*E)=10.45 ops/E=209.0
+  V=40 E=1560 ops=1277640 ops/(V*E)=20.48 ops/E=819.0
+  V=80 E=6320 ops=20470480 ops/(V*E)=40.49 ops/E=3239.0
+
+TOTAL: 77811 randomized checks, 8696 failing, 14/34 suites failing

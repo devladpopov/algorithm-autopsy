@@ -1,0 +1,130 @@
+### fastFourierTransform
+total 2
+PR #135 closed Added Fast Fourier transform
+PR #167 closed Add MaxHeap
+### fourier inverse
+total 0
+### kNN
+total 2
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+PR #592 closed Adding K Nearest Neighbor to ML folder in algorithms with README and tests   
+### k-means
+ERR API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+### kmeans
+total 2
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+PR #595 closed Added kmeans clustering
+### squareRoot
+total 3
+PR #219 open Add Linear prime sieve
+PR #300 open switch shift to pop
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+### square root
+total 3
+PR #219 open Add Linear prime sieve
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+PR #300 open switch shift to pop
+### bitsToFloat
+total 1
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+### subnormal
+total 1
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+### classicPolynome
+ERR API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+### horner
+ERR API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+### hill cipher
+ERR API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+### bitLength
+total 1
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+### multiplyUnsigned
+total 1
+PR #178 closed Update multiplyUnsigned.js
+### isPowerOfTwo
+total 5
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+PR #892 closed Better `isPowerOfTwo` algos and files
+IS #889 closed `isPowerOfTwo` algos don't specify their ranges
+IS #287 closed Possible mistake in README for Bit Manipulation section.
+PR #91 closed Minor fixes.
+### power of two
+total 14
+PR #589 open Adding of a method that get the successor of a node inside the birany search tree
+PR #225 open Add karatsuba algorithm
+IS #889 closed `isPowerOfTwo` algos don't specify their ranges
+PR #286 closed Add the word "set" to avoid misinterpretation in description
+PR #570 closed Amir Abdul Sattar
+PR #159 closed Add karatsubaMultiplication
+IS #287 closed Possible mistake in README for Bit Manipulation section.
+PR #334 closed Add Full Adder algorithm (math/bits)
+PR #201 closed Perform multiplication of any two integers positive or negative throu…
+PR #172 closed Adding math algorithm to compute power and its tests
+PR #110 closed Refactor Rabin-Karp
+PR #198 closed Improved the countSetBit
+PR #91 closed Minor fixes.
+PR #113 closed Refactored disjoint set data structure
+### rail fence
+total 5
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+PR #1143 open Translate to ru
+PR #2082 open feat: Add a Cryptography Algorithm Playfair cipher
+PR #516 closed Add rail fence cipher
+PR #515 closed Add rail fence cipher
+### fibonacci
+ERR API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+### pascal
+ERR API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+### uniquePaths
+ERR API rate limit exceeded for 83.106.40.19. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)
+### least common multiple
+total 2
+IS #1154 open Least Common Multiple for a array of elements.
+PR #91 closed Minor fixes.
+### lcm
+total 5
+PR #1160 open resolved 1154 issue - array-lcm
+PR #1156 open Added LCM for Array of numbers
+PR #1582 open Mahale harsh patch 1
+PR #2090 open Create JS-Code1
+IS #1154 open Least Common Multiple for a array of elements.
+### euclidean
+total 8
+PR #200 open Extended Euclidean Algorithm
+PR #905 open Added Extended Euclidean Algorithm
+PR #1582 open Mahale harsh patch 1
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+PR #171 open choose pivot from median of three elements for quicksort
+PR #602 closed Add Euclidean Distance formula
+PR #558 closed Chore(math-translation-FR-fr): a pack of translations for the math section
+PR #91 closed Minor fixes.
+### pascal
+total 1
+IS #2043 open Inconsistent File Naming: CamelCase vs PascalCase
+### uniquePaths
+total 0
+### unique+paths
+total 1
+IS #683 closed German translation
+### newton
+total 1
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+### gcd
+total 2
+PR #905 open Added Extended Euclidean Algorithm
+PR #1582 open Mahale harsh patch 1
+### hill
+total 4
+PR #1143 open Translate to ru
+IS #406 open Add more cryptography  
+PR #2082 open feat: Add a Cryptography Algorithm Playfair cipher
+PR #2152 closed Rename hill-cipher test directory to `__test__` for consistency
+### fibonacci+0
+total 4
+PR #379 open :bug: Fix: #378 Removing Redundant Condition
+PR #2187 open Fix correctness bugs found in a full-codebase audit
+IS #30 closed Fibonacci sequences
+PR #35 closed Added Explanation of Branch And Bound Approach for solving n-queen Problem in README section
+### multiply+unsigned
+total 0
